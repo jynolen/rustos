@@ -1,0 +1,15 @@
+[
+  {
+      "key": "f5",
+      "command": "workbench.action.tasks.runTask",
+      "when": "config.workspaceKeybindings.qemu.enabled",
+      "args":{
+          "task": "Run"
+      }
+  },
+  {
+      "key": "f5",
+      "command": "-debug.openView",
+      "when": "config.workspaceKeybindings.qemu.enabled"      
+  }
+]
