@@ -1,5 +1,6 @@
+use volatile::Volatile;
 
-use crate::colorcode::ColorCode;
+use super::colorcode::ColorCode; 
 
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -26,23 +27,16 @@ pub enum Color {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
 pub struct ScreenChar {
-    ascii_character: u8,
-    color_code: ColorCode,
-}
-
-impl ScreenChar {
-    pub fn new(byte: u8, color_code: ColorCode) -> ScreenChar {
-        Self { ascii_character:byte, color_code:color_code }
-    }    
+    pub ascii_character: u8,
+    pub color_code: ColorCode,
 }
 
 pub const BUFFER_HEIGHT: usize = 25;
 pub const BUFFER_WIDTH: usize = 80;
 
-use volatile::VolatileRef;
-
 #[repr(transparent)]
-pub struct Buffer<'a> {
+pub struct Buffer {
     //pub chars: [[ScreenChar; BUFFER_WIDTH]; BUFFER_HEIGHT],
-    pub chars: [[VolatileRef<'a, ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
+    //pub chars: [[VolatileRef<'a, ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
+    pub chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }

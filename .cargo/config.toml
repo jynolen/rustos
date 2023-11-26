@@ -8,7 +8,7 @@ rustflags = ["-C", "link-args=/ENTRY:_start /SUBSYSTEM:console"]
 rustflags = ["-C", "link-args=-e __start -static -nostartfiles"]
 
 [target.'cfg(target_os = "none")']
-runner = "bootimage runner --quiet"
+runner = "bootimage runner -quiet"
 
 [unstable]
 build-std-features = ["compiler-builtins-mem"]

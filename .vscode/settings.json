@@ -1,10 +1,9 @@
 {
     "rust-analyzer.cargo.target": "${workspaceFolder}/.cargo/x86_64.rustos.json",
     "rust-analyzer.checkOnSave": true,
-    "rust-analyzer.check.extraArgs": ["--target-dir", "${workspaceFolder}"],
+    "rust-analyzer.check.extraArgs": ["--target-dir", "${workspaceFolder}/.build"],
     "workspaceKeybindings.qemu.enabled": true,
-    "rust-analyzer.check.allTargets": false,
+    "rust-analyzer.check.allTargets": true,
     "rust-analyzer.linkedProjects": [
-        "./vgabuffer/Cargo.toml"
-    ],
+    ]
 }
